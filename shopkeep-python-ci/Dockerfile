@@ -3,6 +3,7 @@ MAINTAINER John Maguire <jmaguire@shopkeep.com>
 
 RUN apt-get update && apt-get install -y \
     openssh-server \
+    openjdk-7-jdk \
     postgresql-9.4
 
 # Allow Jenkins Slave SSH
