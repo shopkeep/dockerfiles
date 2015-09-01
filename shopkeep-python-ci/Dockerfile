@@ -16,3 +16,10 @@ RUN sed -i 's/md5/trust/g' /etc/postgresql/9.4/main/pg_hba.conf
 
 # Standard SSH port
 EXPOSE 22
+
+# Set Locale
+RUN echo "en_US.UTF-8 UTF-8" > /etc/locale.gen
+RUN /usr/sbin/locale-gen
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
