@@ -2,12 +2,13 @@ FROM buildpack-deps:jessie
 MAINTAINER John Maguire <jmaguire@shopkeep.com>
 
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/miniconda/bin
+ENV LANG C.UTF-8
 
 RUN echo "deb http://apt.postgresql.org/pub/repos/apt/ jessie-pgdg main" | tee -a /etc/apt/sources.list.d/pgdg.list
 RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | \
   apt-key add -
 
-RUN apt-get update && apt-get install -y \
+RUN apt-get update && apt-get install -y  \
     openssh-server \
     openjdk-7-jdk \
     postgresql-9.3
@@ -25,12 +26,6 @@ RUN mkdir -p /var/run/sshd
 # Allow local PSQL Connections
 RUN sed -i 's/peer/trust/g' /etc/postgresql/9.3/main/pg_hba.conf
 RUN sed -i 's/md5/trust/g' /etc/postgresql/9.3/main/pg_hba.conf
-
-# Set the locale
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
-ENV LC_ALL en_US.UTF-8  
 
 # Standard SSH port
 EXPOSE 22
