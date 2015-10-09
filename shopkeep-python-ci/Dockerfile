@@ -26,5 +26,11 @@ RUN mkdir -p /var/run/sshd
 RUN sed -i 's/peer/trust/g' /etc/postgresql/9.3/main/pg_hba.conf
 RUN sed -i 's/md5/trust/g' /etc/postgresql/9.3/main/pg_hba.conf
 
+# Set the locale
+RUN locale-gen en_US.UTF-8  
+ENV LANG en_US.UTF-8  
+ENV LANGUAGE en_US:en  
+ENV LC_ALL en_US.UTF-8  
+
 # Standard SSH port
 EXPOSE 22
