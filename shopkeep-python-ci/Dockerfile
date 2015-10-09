@@ -1,4 +1,4 @@
-FROM python:3.4.2
+FROM buildpack-deps:jessie
 MAINTAINER John Maguire <jmaguire@shopkeep.com>
 
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/root/miniconda/bin
