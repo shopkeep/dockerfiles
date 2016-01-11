@@ -27,7 +27,7 @@ RUN \
 # Install
 RUN \
   apt-get update && \
-  apt-get install -y build-essential sbt python-dev python-boto libcurl4-nss-dev libsasl2-dev maven libapr1-dev libsvn-dev zlib1g-dev && \
+  apt-get install -y build-essential sbt python-dev python-boto libcurl4-nss-dev libsasl2-dev libsasl2-2 libsasl2-modules maven libapr1-dev libsvn-dev zlib1g-dev && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
