@@ -1,4 +1,4 @@
-FROM golang:1.5.2
+FROM golang:1.6.0
 MAINTAINER ShopKeep Developers <developers@shopkeep.com>
 
 RUN apt-get update && \
