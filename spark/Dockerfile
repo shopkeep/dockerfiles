@@ -4,6 +4,7 @@ ENV HADOOP_HOME /opt/spark/hadoop-2.6.0
 ENV MESOS_VERSION 0.26.0
 ENV MESOS_NATIVE_LIBRARY /opt/libmesos-$MESOS_VERSION.so
 ENV SBT_VERSION 0.13.8
+ENV SBT_JAR https://repo.typesafe.com/typesafe/ivy-releases/org.scala-sbt/sbt-launch/$SBT_VERSION/sbt-launch.jar
 ENV SCALA_VERSION 2.11.7
 ENV SPARK_DOWNLOAD_URL http://d3kbcqa49mib13.cloudfront.net/spark-1.6.0-bin-hadoop2.6.tgz
 
@@ -20,15 +21,13 @@ RUN \
   echo 'export PATH=~/scala-$SCALA_VERSION/bin:$PATH' >> /root/.bashrc
 
 # Update sbt package
-RUN \
-  curl -L -o sbt-$SBT_VERSION.deb https://dl.bintray.com/sbt/debian/sbt-$SBT_VERSION.deb && \
-  dpkg -i sbt-$SBT_VERSION.deb && \
-  rm sbt-$SBT_VERSION.deb
+ADD  $SBT_JAR  /usr/local/bin/sbt-launch.jar
+COPY sbt.sh    /usr/local/bin/sbt
 
 # Install
 RUN \
   apt-get update && \
-  apt-get install -y build-essential sbt python-dev python-boto libcurl4-nss-dev libsasl2-dev libsasl2-2 libsasl2-modules maven libapr1-dev libsvn-dev zlib1g-dev && \
+  apt-get install -y build-essential python-dev python-boto libcurl4-nss-dev libsasl2-dev libsasl2-2 libsasl2-modules maven libapr1-dev libsvn-dev zlib1g-dev && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
