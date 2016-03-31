@@ -11,4 +11,4 @@ RUN mv gatling-charts-highcharts-bundle-${GATLING_VERSION} gatling
 RUN rm -rf gatling/user-files/*
 RUN rm -rf gatling/results
 
-CMD ["/usr/local/gatling/bin/gatling.sh"]
+ENTRYPOINT ["/usr/local/gatling/bin/gatling.sh"]
