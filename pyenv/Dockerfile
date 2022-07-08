@@ -23,8 +23,9 @@ RUN pyenv install 2.7.15
 RUN pyenv install 3.5.5
 RUN pyenv install 3.6.5
 RUN pyenv install 3.7.0
+RUN pyenv install 3.9.13
 RUN pyenv rehash
-RUN pyenv global 3.7.0 3.6.5 3.5.5 2.7.15
+RUN pyenv global 3.9.13 3.7.0 3.6.5 3.5.5 2.7.15
 
 # install build and test dependencies
 RUN pip install --upgrade pip tox wheel
