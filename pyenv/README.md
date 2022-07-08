@@ -10,6 +10,7 @@ The following Python versions are available in this image:
 - 3.5.5
 - 3.6.5
 - 3.7.0
+- 3.9.13
 
 ## Available libraries
 
