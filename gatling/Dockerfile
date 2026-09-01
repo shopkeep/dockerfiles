@@ -1,4 +1,4 @@
-FROM shopkeep/sbt:0.13.8
+FROM lightspeedcommerceinc/sbt:0.13.8
 
 ENV GATLING_VERSION 2.1.7
 
